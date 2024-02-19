@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,23 @@
    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-   
+   <div class="timerCnt">
+      <h1 class="timerCnt__titleApp">Timer</h1>
+      <form action="js/timer.js" class="timerCnt__form form">
+         <label for="form__hour">
+            <input type="text" class="form__hour" id="form__hour">
+            hours</label>
+         <label for="form__minute">
+            <input type="text" class="form__minute" id="form__minute">
+            minutes</label>
+         <label for="form__second">
+            <input type="text" class="form__second" id="form__second">
+            seconds</label>
+      </form>
+      <div class="timerCnt__btnsCnt btnsCnt">
+         <button class="btnsCnt__"></button>
+      </div>
+   </div>
+   <script src="js/timer.js" defer></script>
 </body>
 </html>
