@@ -1,16 +1,27 @@
 :root {
 	/* colors */
 	--timerCnt-bg-color: #000;
+
 	--font-color: #fff;
+
+	--input-bg-color: #000;
+	--input-font-color: #fff;
 
 	/* sizes */
 	--timerCnt-height: 100vh;
 
-   --input-width: 100%;
-   --input-height: 20vh;
+	--form-width: 80%;
+
+	--input-width: 100%;
+	--input-height: 20vh;
+	--input-font-size: 8rem;
+
+	--btnsCnt-width: 80%;
+	--btnsCnt-top-margin: 6%;
 
 	box-sizing: border-box;
 	color: var(--font-color);
+	font-size: 16px;
 }
 
 .timerCnt,
@@ -28,11 +39,27 @@ label {
 .timerCnt__form {
 	display: flex;
 	flex-direction: row;
+	width: var(--form-width);
 }
 
 .form__hour,
 .form__minute,
 .form__second {
+	background-color: var(--input-bg-color);
 	width: var(--input-width);
 	height: var(--input-height);
+	color: var(--input-font-color);
+	font-size: var(--input-font-size);
+	text-align: center;
+}
+
+.timerCnt__btnsCnt {
+	width: var(--btnsCnt-width);
+	margin-top: var(--btnsCnt-top-margin);
+}
+
+.btnsCnt__controlBtnsCnt,
+.btnsCnt__extraBtnsCnt {
+	display: flex;
+	justify-content: center;
 }
