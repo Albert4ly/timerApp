@@ -7,6 +7,8 @@
 	--input-bg-color: #000;
 	--input-font-color: #fff;
 
+	--btn-bg-color: transparent;
+
 	/* sizes */
 	--timerCnt-height: 100vh;
 
@@ -18,6 +20,11 @@
 
 	--btnsCnt-width: 80%;
 	--btnsCnt-top-margin: 6%;
+
+	--extraBtnsCnt-top-margin: 20%;
+
+	--btn-width: 15%;
+	--btn-height: 8vh;
 
 	box-sizing: border-box;
 	color: var(--font-color);
@@ -62,4 +69,17 @@ label {
 .btnsCnt__extraBtnsCnt {
 	display: flex;
 	justify-content: center;
+}
+
+.btnsCnt__extraBtnsCnt {
+	margin-top: var(--extraBtnsCnt-top-margin);
+}
+
+.btnsCnt__controlBtnsCnt__btn,
+.btnsCnt__extraBtnsCnt__btn {
+	width: var(--btn-width);
+	height: var(--btn-height);
+	background-color: var(--btn-bg-color);
+	margin: 1% 1% 1% 1%;
+	border: 1px solid white;
 }
