@@ -14,13 +14,13 @@
       <h1 class="timerCnt__titleApp">Timer</h1>
       <form action="js/timer.js" class="timerCnt__form form">
          <label for="form__hour">
-            <input type="text" class="form__hour" id="form__hour">
+            <input type="text" class="form__hour" placeholder="00" maxlength="2" id="form__hour">
             hours</label>
          <label for="form__minute">
-            <input type="text" class="form__minute" id="form__minute">
+            <input type="text" class="form__minute" placeholder="00" maxlength="2" id="form__minute">
             minutes</label>
          <label for="form__second">
-            <input type="text" class="form__second" id="form__second">
+            <input type="text" class="form__second" placeholder="00" maxlength="2" id="form__second">
             seconds</label>
       </form>
       <div class="timerCnt__btnsCnt btnsCnt">
@@ -38,7 +38,7 @@
          </div>
       </div>
    </div>
-   <script src="js/timer.js" defer></script>
+   <script src="js/timer.js" type="module"></script>
 </body>
 
 </html>
