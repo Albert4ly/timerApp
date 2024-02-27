@@ -6,6 +6,8 @@ class Timer {
       this.minutes = 0;
       this.seconds = 0;
 
+      this.toNumberConverted = 0;
+
       this.listenerFunc();
    }
 
@@ -14,6 +16,10 @@ class Timer {
       minute.addEventListener("change", (e) => this.editMinuteInput(e));
       second.addEventListener("change", (e) => this.editSecondInput(e));
    }
+
+   fromStrValueToNumberConverted(e) {
+		this.toNumberConverted = Number(e.target.value);
+	}
 }
 
 new Timer();
