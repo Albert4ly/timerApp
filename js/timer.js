@@ -1,4 +1,8 @@
-import { hour, minute, second } from "./htmlElementHandles.js";
+import { hour, minute, second } from "./htmlElementsHandles.js";
+
+const ZERO_STRING = "0";
+const NINE_NUMBER = 9;
+const MAX_MINUTES = 59;
 
 class Timer {
    constructor() {
@@ -16,6 +20,27 @@ class Timer {
       minute.addEventListener("change", (e) => this.editMinuteInput(e));
       second.addEventListener("change", (e) => this.editSecondInput(e));
    }
+
+   editMinuteInput(e) {
+		this.fromStrValueToNumberConverted(e);
+
+		if (this.toNumberConverted > MAX_MINUTES) {
+			this.minutes = MAX_MINUTES;
+			minute.value = this.minutes;
+		}
+
+		if (this.toNumberConverted < MAX_MINUTES) {
+			if (this.toNumberConverted > NINE_NUMBER) {
+				this.minutes = this.toNumberConverted;
+            minute.value = this.minutes;
+			}
+		}
+
+		if (this.toNumberConverted <= NINE_NUMBER) {
+			this.minutes = ZERO_STRING + this.toNumberConverted.toString();
+         minute.value = this.minutes;
+		}
+	}
 
    fromStrValueToNumberConverted(e) {
 		this.toNumberConverted = Number(e.target.value);
