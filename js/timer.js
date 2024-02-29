@@ -22,38 +22,49 @@ class Timer {
 		second.addEventListener("change", (e) => this.editSecondInput(e));
 	}
 
+	editHourInput(e) {
+		this.fromStrValueToNumberConverted(e);
+
+		if (this.toNumberConverted <= NINE_NUMBER) {
+			this.hours = ZERO_STRING + this.toNumberConverted.toString();
+			hour.value = this.hours;
+		}
+	}
+
 	editMinuteInput(e) {
 		this.fromStrValueToNumberConverted(e);
-      this.editValue(MAX_MINUTES, this.minutes, minute);
+		this.editValue(MAX_MINUTES, this.minutes, minute);
 	}
 
 	editSecondInput(e) {
-      this.fromStrValueToNumberConverted(e);
-      this.editValue(MAX_SECONDS, this.seconds, second);
+		this.fromStrValueToNumberConverted(e);
+		this.editValue(MAX_SECONDS, this.seconds, second);
 	}
 
 	fromStrValueToNumberConverted(e) {
 		this.toNumberConverted = Number(e.target.value);
-   }
-   
-   editValue(MAX_NUMBER, valueOfTimeUnit, newInputValue) {
-      if (this.toNumberConverted > MAX_NUMBER) {
-         valueOfTimeUnit = MAX_NUMBER;
-         newInputValue.value = valueOfTimeUnit;
-      }
+	}
 
-      if (this.toNumberConverted < MAX_NUMBER) {
-         if (this.toNumberConverted > NINE_NUMBER) {
-            valueOfTimeUnit = this.toNumberConverted;
-            newInputValue.value = valueOfTimeUnit;
-         }
-      }
+	editValue(MAX_NUMBER, valueOfTimeUnit, newInputValue) {
+		if (this.toNumberConverted > MAX_NUMBER) {
+			valueOfTimeUnit = MAX_NUMBER;
+			newInputValue.value = valueOfTimeUnit;
+		}
 
-      if (this.toNumberConverted <= NINE_NUMBER) {
-         valueOfTimeUnit = ZERO_STRING + this.toNumberConverted.toString();
-         newInputValue.value = valueOfTimeUnit;
-      }
-   }
+		if (this.toNumberConverted < MAX_NUMBER) {
+			if (this.toNumberConverted > NINE_NUMBER) {
+				valueOfTimeUnit = this.toNumberConverted;
+				newInputValue.value = valueOfTimeUnit;
+			}
+		}
+
+		if (this.toNumberConverted <= NINE_NUMBER) {
+		   valueOfTimeUnit = ZERO_STRING + this.toNumberConverted.toString();
+		   newInputValue.value = valueOfTimeUnit;
+		}
+	}
+
 }
+
 
 new Timer();
