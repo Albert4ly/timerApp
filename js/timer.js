@@ -1,4 +1,4 @@
-import { hour, minute, second } from "./htmlElementsHandles.js";
+import { hour, minute, second, runBtn } from "./htmlElementsHandles.js";
 
 const ZERO_STRING = "0";
 const NINE_NUMBER = 9;
@@ -36,6 +36,8 @@ class Timer {
 		this.fromStrValueToNumberConverted(e);
 		this.editValue(MAX_SECONDS, this.seconds, second);
 	}
+
+
 
 	fromStrValueToNumberConverted(e) {
 		this.toNumberConverted = Number(e.target.value);
