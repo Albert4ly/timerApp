@@ -1,4 +1,10 @@
-import { hour, minute, second, runBtn } from "./htmlElementsHandles.js";
+import {
+	hour,
+	minute,
+	second,
+	iconOk,
+	editBtn,
+} from "./htmlElementsHandles.js";
 
 const ZERO_STRING = "0";
 const NINE_NUMBER = 9;
@@ -20,6 +26,8 @@ class Timer {
 		hour.addEventListener("change", (e) => this.editHourInput(e));
 		minute.addEventListener("change", (e) => this.editMinuteInput(e));
 		second.addEventListener("change", (e) => this.editSecondInput(e));
+
+		editBtn.addEventListener("click", (e) => this.editBtn(e));
 	}
 
 	editHourInput(e) {
@@ -33,11 +41,9 @@ class Timer {
 	}
 
 	editSecondInput(e) {
-		this.fromStrValueToNumberConverted(e);
+		this.fromStrValueToNumberConverted(e, second);
 		this.editValue(MAX_SECONDS, this.seconds, second);
 	}
-
-
 
 	fromStrValueToNumberConverted(e) {
 		this.toNumberConverted = Number(e.target.value);
@@ -64,6 +70,17 @@ class Timer {
 			valueOfTimeUnit = ZERO_STRING + this.toNumberConverted.toString();
 			newInputValue.value = valueOfTimeUnit;
 		}
+	}
+
+	editBtn() {
+		hour.classList.toggle("inputs");
+		minute.classList.toggle("inputs");
+		second.classList.toggle("inputs");
+		hour.toggleAttribute.toggle("disabled");
+		minute.toggleAttribute.toggle("disabled");
+		second.toggleAttribute("disabled");
+
+		iconOk.classList.toggle("icon-pencil");
 	}
 }
 
