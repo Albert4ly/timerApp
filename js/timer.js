@@ -24,11 +24,7 @@ class Timer {
 
 	editHourInput(e) {
 		this.fromStrValueToNumberConverted(e);
-
-		if (this.toNumberConverted <= NINE_NUMBER) {
-			this.hours = ZERO_STRING + this.toNumberConverted.toString();
-			hour.value = this.hours;
-		}
+		this.hourValue(MAX_MINUTES, this.hours, hour);
 	}
 
 	editMinuteInput(e) {
@@ -58,13 +54,15 @@ class Timer {
 			}
 		}
 
-		if (this.toNumberConverted <= NINE_NUMBER) {
-		   valueOfTimeUnit = ZERO_STRING + this.toNumberConverted.toString();
-		   newInputValue.value = valueOfTimeUnit;
-		}
+		this.hourValue(MAX_NUMBER, valueOfTimeUnit, newInputValue);
 	}
 
+	hourValue(MAX_NUMBER, valueOfTimeUnit, newInputValue) {
+		if (this.toNumberConverted <= NINE_NUMBER) {
+			valueOfTimeUnit = ZERO_STRING + this.toNumberConverted.toString();
+			newInputValue.value = valueOfTimeUnit;
+		}
+	}
 }
-
 
 new Timer();
