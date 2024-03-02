@@ -4,6 +4,7 @@ import {
 	second,
 	iconOk,
 	editBtn,
+	playPauseBtn,
 } from "./htmlElementsHandles.js";
 
 const ZERO_STRING = "0";
@@ -17,6 +18,10 @@ class Timer {
 		this.minutes = 0;
 		this.seconds = 0;
 
+		this.countDownHours = 0;
+		this.countDownMins = 0;
+		this.countDownSecs = 0;
+
 		this.toNumberConverted = 0;
 
 		this.listenerFunc();
@@ -28,6 +33,7 @@ class Timer {
 		second.addEventListener("change", (e) => this.editSecondInput(e));
 
 		editBtn.addEventListener("click", (e) => this.editBtn(e));
+		playPauseBtn.addEventListener("click", (e) => this.playPauseTimer(e));
 	}
 
 	editHourInput(e) {
@@ -47,6 +53,7 @@ class Timer {
 
 	fromStrValueToNumberConverted(e) {
 		this.toNumberConverted = Number(e.target.value);
+
 	}
 
 	editValue(MAX_NUMBER, valueOfTimeUnit, newInputValue) {
@@ -81,6 +88,17 @@ class Timer {
 		second.toggleAttribute("disabled");
 
 		iconOk.classList.toggle("icon-pencil");
+	}
+
+	playPauseTimer() {
+		this.countDownHours = this.hours;
+		this.countDownMins = this.minutes;
+		this.countDownSecs = this.seconds;
+
+      setInterval(() => {
+			this.countDownSec--;
+			second.value = this.countDownSec;
+		}, 1000);
 	}
 }
 

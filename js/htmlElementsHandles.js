@@ -5,4 +5,6 @@ const second = document.querySelector(".form__second");
 const iconOk = document.querySelector(".icon-ok");
 const editBtn = document.querySelector(".icon-ok");
 
-export { hour, minute, second, iconOk, editBtn};
+const playPauseBtn = document.querySelector(".icon-play");
+
+export { hour, minute, second, iconOk, editBtn, playPauseBtn };
