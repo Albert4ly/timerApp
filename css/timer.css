@@ -60,6 +60,10 @@ label {
 	text-align: center;
 }
 
+.inputs{
+	border: none;
+}
+
 .timerCnt__btnsCnt {
 	width: var(--btnsCnt-width);
 	margin-top: var(--btnsCnt-top-margin);
