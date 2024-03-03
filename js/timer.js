@@ -51,8 +51,18 @@ class Timer {
 		this.editValue(MAX_SECONDS, this.seconds, second);
 	}
 
-	fromStrValueToNumberConverted(e) {
+	fromStrValueToNumberConverted(e, input) {
 		this.toNumberConverted = Number(e.target.value);
+
+		if (input.classList.contains("form__second")) {
+			this.seconds = Number(e.target.value);
+		}
+		if (input.classList.contains("form__minute")) {
+			this.minutes = Number(e.target.value);
+		}
+		if (input.classList.contains("form__hour")) {
+			this.hours = Number(e.target.value);
+		}
 
 	}
 
@@ -96,8 +106,8 @@ class Timer {
 		this.countDownSecs = this.seconds;
 
       setInterval(() => {
-			this.countDownSec--;
-			second.value = this.countDownSec;
+			this.countDownSecs--;
+			second.value = this.countDownSecs;
 		}, 1000);
 	}
 }
