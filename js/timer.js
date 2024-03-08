@@ -22,6 +22,8 @@ class Timer {
 		this.countDownMins = 0;
 		this.countDownSecs = 0;
 
+		this.inter = null;
+
 		this.toNumberConverted = 0;
 
 		this.listenerFunc();
@@ -37,12 +39,12 @@ class Timer {
 	}
 
 	editHourInput(e) {
-		this.fromStrValueToNumberConverted(e);
+		this.fromStrValueToNumberConverted(e, hour);
 		this.hourValue(MAX_MINUTES, this.hours, hour);
 	}
 
 	editMinuteInput(e) {
-		this.fromStrValueToNumberConverted(e);
+		this.fromStrValueToNumberConverted(e, minute);
 		this.editValue(MAX_MINUTES, this.minutes, minute);
 	}
 
@@ -63,7 +65,6 @@ class Timer {
 		if (input.classList.contains("form__hour")) {
 			this.hours = Number(e.target.value);
 		}
-
 	}
 
 	editValue(MAX_NUMBER, valueOfTimeUnit, newInputValue) {
@@ -90,26 +91,107 @@ class Timer {
 	}
 
 	editBtn() {
+		this.countDownHours = this.hours;
+		this.countDownMins = this.minutes;
+		this.countDownSecs = this.seconds;
+
 		hour.classList.toggle("inputs");
 		minute.classList.toggle("inputs");
 		second.classList.toggle("inputs");
-		hour.toggleAttribute.toggle("disabled");
-		minute.toggleAttribute.toggle("disabled");
+		hour.toggleAttribute("disabled");
+		minute.toggleAttribute("disabled");
 		second.toggleAttribute("disabled");
 
 		iconOk.classList.toggle("icon-pencil");
 	}
 
 	playPauseTimer() {
-		this.countDownHours = this.hours;
-		this.countDownMins = this.minutes;
-		this.countDownSecs = this.seconds;
+		playPauseBtn.classList.toggle("icon-pause");
 
-      setInterval(() => {
-			this.countDownSecs--;
-			second.value = this.countDownSecs;
+		this.countSec(
+			this.seconds,
+			second,
+			this.countDownMins,
+			minute,
+			this.countDownHours,
+			hour,
+			playPauseBtn,
+			this.inter
+		);
+	}
+
+	countSec(
+		counterDownSec,
+		newInputValue,
+		counterDownMin,
+		newInputValueMin,
+		counterDownHour,
+		newInputValueHr,
+		playBtn,
+		d
+	) {
+		d = setInterval(() => {
+			counterDownSec--;
+			if (counterDownSec <= NINE_NUMBER) {
+				newInputValue.value = ZERO_STRING + counterDownSec.toString();
+			} else {
+				newInputValue.value = counterDownSec;
+				counterDownSec = counterDownSec;
+			}
+
+			if (counterDownSec == 0) {
+				clearInterval(d);
+				if (!counterDownMin == 0) {
+					counterDownMin--;
+					if (counterDownMin <= NINE_NUMBER) {
+						newInputValueMin.value =
+							ZERO_STRING + counterDownMin.toString();
+					} else {
+						newInputValueMin.value = counterDownMin;
+					}
+					counterDownSec = 59;
+					newInputValue.value = counterDownSec;
+					this.countSec(
+						counterDownSec,
+						newInputValue,
+						counterDownMin,
+						newInputValueMin,
+						counterDownHour,
+						newInputValueHr,
+						playBtn,
+						d
+					);
+				}
+				if (counterDownMin == 0) {
+					if (!counterDownHour == 0) {
+						counterDownHour--;
+						if (counterDownHour <= NINE_NUMBER) {
+							newInputValueHr.value =
+								ZERO_STRING + counterDownHour.toString();
+						} else {
+							newInputValueHr.value = counterDownHour;
+						}
+						counterDownMin = 59;
+						newInputValueMin.value = counterDownMin;
+						this.countSec(
+							counterDownSec,
+							newInputValue,
+							counterDownMin,
+							newInputValueMin,
+							counterDownHour,
+							newInputValueHr,
+							playBtn,
+							d
+						);
+					}
+				}
+			}
+
+			if (!playBtn.classList.contains("icon-pause")) {
+				newInputValue.value = counterDownSec;
+				clearInterval(d);
+			}
 		}, 1000);
 	}
 }
-
 new Timer();
